@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:music_player/amazon_Scraper.dart';
+import 'package:music_player/learn_navigation.dart';
+import 'package:provider/provider.dart';
 
 // import 'package:html/dom.dart' as dom;
 // import 'package:http/http.dart' as http;
@@ -14,14 +16,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(color: Colors.blue),
-        textTheme: TextTheme(bodyText2: TextStyle(fontSize: 24)),
+    return ChangeNotifierProvider(
+      create: (context) => AppState(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
+          appBarTheme: AppBarTheme(color: Colors.blue),
+          textTheme: TextTheme(bodyText2: TextStyle(fontSize: 24)),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+        ),
+        home: LearnNavigation(),
       ),
-      home: AmazonScraper(),
     );
   }
 }
-
